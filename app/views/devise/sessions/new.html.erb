@@ -1,0 +1,16 @@
+<h2 class='middle'>Log in</h2>
+
+<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="form-inputs row-fluid form">
+    <%= f.input :email, input_html: { class: 'input-style' }, required: false, autofocus: true %>
+    <%= f.input :password, input_html: { class: 'input-style' }, required: false %>
+    <%= f.input :remember_me, input_html: { class: 'input-style' }, as: :boolean if devise_mapping.rememberable? %>
+  </div>
+
+  <div class="form-actions middle">
+    <%= f.button :submit, "Log in", class: 'btn btn-primary btn-wider' %>
+  </div>
+<% end %>
+<div class='middle'>
+	<%= render "devise/shared/links" %>
+</div>

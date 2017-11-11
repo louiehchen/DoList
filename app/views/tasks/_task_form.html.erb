@@ -1,0 +1,15 @@
+<div class='container' id='modal-back'>
+	<div class='modal-header clearfix'>
+		<h1 id="title"><%= task.new_record? ? 'New Task' : "Editing task #{task.title}" %></h1>
+		<%= simple_form_for task, class: 'clearfix', remote: true  do |f| %>
+			<div class='modal-body'>
+				<%= f.input :title %>
+				<%= f.input :note, :label_html => {:id => 'area'} %>
+				<%= f.input :completed, as: :string, input_html: { class: 'datepicker', value: task.completed.present? ? localize(task.completed, format: '%d/%m/%Y') : nil } %>
+			</div>
+			<div class='modal-footer'>
+				<%= f.submit 'Save', class: 'btn btn-primary btn-wider' %>
+			</div>
+		<% end %>
+	</div>
+</div>
